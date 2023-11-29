@@ -1,0 +1,37 @@
+int maximumDifference(int* nums, int numsSize) {
+    int min = INT_MAX , max_diff = -1;
+    for( int i = 0 ; i < numsSize - 1 ; i++)
+    {
+        min = fmin(nums[i],min);
+        max_diff = (nums[i] < nums[i+1]) ? fmax(max_diff,abs(min-nums[i+1])) : max_diff;
+    }
+    return max_diff;
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+int maximumDifference(int* nums, int numsSize){
+    int max_diff = -1 , max = nums[0];
+    for(int i = 1 ; i < numsSize ; i++)
+    {
+        if(nums[i] > max)
+            max_diff = fmax(max_diff,(nums[i] - max));
+        else
+            max = nums[i];
+    }
+    return max_diff;
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+int maximumDifference(int* nums, int numsSize){
+    int max = -1;
+    for(int i = 0 ; i < numsSize - 1 ; i++)
+        for(int j = i + 1 ; j < numsSize ; j++)
+            max = (nums[j] - nums[i]) ? fmax(max,nums[j]-nums[i]) : max;
+    return max;
+}
